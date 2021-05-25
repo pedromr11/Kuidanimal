@@ -2,22 +2,9 @@
   
   <img alt="Kuidanimal logo" src="../assets/Logo.jpg">
   <div class="anuncios">
-    <h1>Aquí se listarán los anuncios</h1>
-    <Listar/>
+    
   </div>
 </template>
-
-<script>
-import Listar from '@/components/Listar.vue'
-
-export default {
-  name: 'Anuncios',
-  components: {
-    Listar
-  }
-}
-</script>
-
 
 <style scoped>
 img{
@@ -33,6 +20,7 @@ img{
   margin-top: 70px;
   float: right;
   border: 1px solid black;
-  overflow-y: scroll; 
+  overflow-y: scroll;
 }
+
 </style>

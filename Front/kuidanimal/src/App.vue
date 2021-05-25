@@ -9,6 +9,8 @@
     <router-link to="/modificar">Modificar</router-link>
     <br><br>
     <router-link to="/eliminar">Eliminar</router-link>
+    <br><br>
+    <router-link to="/aboutus">About us</router-link>
   </div>
   <router-view/>
 </template>

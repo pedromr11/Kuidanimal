@@ -1,22 +1,30 @@
 <template>
   <div class="listado">
-      <table>
-          <tr>
-              <th>Id anuncio</th>
-              <th>Animal</th>
-              <th>Teléfono</th>
-              <th>Correo Eletrónico</th>
-              <th>Precio</th>
-          </tr>
-
-          <tr v-for="(anuncios) in anuncio" :key="anuncios">
-              <td>{{anuncios.id_anuncio}}</td>
-              <td>{{anuncios.animal}}</td>
-              <td>{{anuncios.telefono}}</td>
-              <td>{{anuncios.correo_electronico}}</td>
-              <td>{{anuncios.precio}}</td>
-          </tr>
-      </table>
+      <head>
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+      </head>
+      <body>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id anuncio</th>
+                    <th scope="col">Animal</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Correo Electrónico</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(anuncios) in anuncio" :key="anuncios">
+                    <td>{{anuncios.id_anuncio}}</td>
+                    <td>{{anuncios.animal}}</td>
+                    <td>{{anuncios.telefono}}</td>
+                    <td>{{anuncios.correo_electronico}}</td>
+                    <td>{{anuncios.precio}}</td>
+                </tr>
+            </tbody>
+        </table>       
+      </body>
   </div>
 </template>
 
@@ -28,7 +36,8 @@ export default {
   
   data(){
       return{
-          anuncio: []
+          anuncio: [],
+          provincias: []
       }      
   },
   created(){
@@ -38,12 +47,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-table{
-    border: 1px solid black;
-    border-collapse: collapse;
-    margin-left: 25%;
-    width: 60%;
-}
-</style>

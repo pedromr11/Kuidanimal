@@ -2,7 +2,8 @@
   
   <img alt="Kuidanimal logo" src="../assets/Logo.jpg">
   <div class="anuncios">
-    <h1>Aquí se listarán los anuncios</h1>
+    <h1>Listado de anuncios</h1>
+    <br>
     <Listar/>
   </div>
 </template>

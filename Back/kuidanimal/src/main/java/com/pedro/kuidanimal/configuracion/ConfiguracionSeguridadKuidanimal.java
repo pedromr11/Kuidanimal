@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class ConfiguracionSeguridadColegio extends WebSecurityConfigurerAdapter{
+public class ConfiguracionSeguridadKuidanimal extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	DataSource dataSource;

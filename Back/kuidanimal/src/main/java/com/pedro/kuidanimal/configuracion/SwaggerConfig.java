@@ -17,7 +17,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket apiDocket() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.kike.colegio.controladores.Rest"))
+				.apis(RequestHandlerSelectors.basePackage("com.pedro.kuidanimal.controladores.Rest"))
 				.paths(PathSelectors.any()).build();
 	}
 }

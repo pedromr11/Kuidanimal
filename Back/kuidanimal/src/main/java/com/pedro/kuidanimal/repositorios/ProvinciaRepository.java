@@ -14,7 +14,7 @@ import com.pedro.kuidanimal.entities.ProvinciaEntity;
 public interface ProvinciaRepository extends CrudRepository<ProvinciaEntity, Integer>{
 	
 	@Query(value = "select new com.pedro.kuidanimal.dtos.ComboDTO (p.id_provincia, p.nombre) "
-			+ "com.pedro.kuidanimal.entities.ProvinciaEntity  p "
+			+ "FROM com.pedro.kuidanimal.entities.ProvinciaEntity  p "
 			+ "WHERE (p.id_provincia LIKE CONCAT('%',:id_provincia,'%') or :id_provincia is null) "
 			+ "AND p.nombre LIKE CONCAT ('%',:nombre,'%') ")
 			  List<ComboDTO>buscaProvinciaPorIdNombre(@Param("id_provincia") Integer id_provincia, @Param("nombre")String nombre);

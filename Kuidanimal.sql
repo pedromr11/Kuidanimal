@@ -36,9 +36,9 @@ CREATE TABLE `anuncios` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-LOCK TABLES `anuncios`` WRITE;
+LOCK TABLES `provincias` WRITE;
 /*!40000 ALTER TABLE `provincias` DISABLE KEYS */;
-INSERT INTO `anuncios` VALUES (1,1,'perro',123456789,'prueba@gmail.com',10),(2,12,'gato',647871533,'prueba2@gmail.com',15);
+INSERT INTO `provincias` VALUES (1,1,'perro',123456789,'prueba@gmail.com',10),(2,12,'gato',647871533,'prueba2@gmail.com',15);
 /*!40000 ALTER TABLE `provincias` ENABLE KEYS */;
 UNLOCK TABLES;
 

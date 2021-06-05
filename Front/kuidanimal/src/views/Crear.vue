@@ -3,8 +3,22 @@
   <img alt="Kuidanimal logo" src="../assets/Logo.jpg">
   <div class="anuncios">
     <h1>Aquí se crearán los anuncios</h1>
+    <br>
+    <Create/>
   </div>
 </template>
+
+<script>
+import Create from '@/components/Create.vue'
+
+export default {
+  name: 'Crear',
+  components: {
+    Create
+  }
+}
+</script>
+
 
 <style scoped>
 img{

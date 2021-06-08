@@ -11,9 +11,9 @@
           </div>
 
           <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Provincia</span>
+              <span class="input-group-text" id="basic-addon1">Id de la provincia</span>
               <select class="form-select" aria-label="Default select example" v-model="var2">
-                  <option v-for="(provincia, index) in provincias" :key="index">{{provincia.name}}</option>
+                  <option v-for="(provincia, index) in provincias" :key="index">{{provincia.id_provincia}}</option>
               </select>
           </div>
           <br>
@@ -37,7 +37,6 @@
           <div class="input-group mb-3">
               <button type="submit" class="btn btn-primary mb-3">Crear</button>
           </div>
-
         </form>
       </body>
   </div>

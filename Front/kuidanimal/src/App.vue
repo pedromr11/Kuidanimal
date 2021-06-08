@@ -1,16 +1,16 @@
 <template>
   <div id="menu">
-    <router-link to="/">Inicio</router-link> 
-    <br><br>
-    <router-link to="/anuncios">Anuncios</router-link>
-    <br><br>
-    <router-link to="/crear">Crear</router-link>
-    <br><br>
-    <router-link to="/modificar">Modificar</router-link>
-    <br><br>
+    
+    <router-link to="/">Inicio</router-link> |
+    
+    <router-link to="/anuncios">Anuncios</router-link> |
+    
+    <router-link to="/crear">Crear</router-link> |
+    
+    <router-link to="/modificar">Modificar</router-link> |
+    
     <router-link to="/eliminar">Eliminar</router-link>
-    <br><br>
-    <router-link to="/aboutus">About us</router-link>
+    
   </div>
   <router-view/>
 </template>
@@ -25,11 +25,15 @@
 }
 
 #menu {
-  padding: 30px;
-  width: 230px;
-  height: 150px;
-  position: absolute;
-  top: 200px;
+  padding: 40px;
+  margin-top: 35px;
+  position: fixed;
+  left: 670px;
+  top: 0;
+  right: 0;
+  width: 30%;
+  background-color: white;
+  font-size: large;
 }
 #menu a {
   font-weight: bold;

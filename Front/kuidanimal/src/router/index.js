@@ -26,11 +26,6 @@ const routes = [
     path: '/eliminar',
     name: 'Eliminar',
     component: () => import('../views/Eliminar.vue')
-  },
-  {
-    path: '/aboutus',
-    name: 'AboutUs',
-    component: () => import('../views/AboutUs.vue')
   }
 ]
 

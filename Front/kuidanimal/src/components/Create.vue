@@ -11,9 +11,9 @@
           </div>
 
           <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Id de la provincia</span>
+              <span class="input-group-text" id="basic-addon1">Provincia</span>
               <select class="form-select" aria-label="Default select example" v-model="var2">
-                  <option v-for="(provincia, index) in provincias" :key="index">{{provincia.id_provincia}}</option>
+                  <option v-for="(provincia, index) in provincias" :key="index" v-bind:value="provincia.id_provincia">{{provincia.nombre}}</option>
               </select>
           </div>
           <br>
@@ -35,7 +35,7 @@
           </div>
 
           <div class="input-group mb-3">
-              <button type="submit" class="btn btn-primary mb-3">Crear</button>
+              <button type="submit" class="btn btn-primary mb-3" @click="enviar">Crear</button>
           </div>
         </form>
       </body>
@@ -63,6 +63,19 @@ export default {
        axios.get("http://localhost:8080/kuidanimal/v1/provincias").then((response) => {
           this.provincias = response.data
       })
+    },
+    enviar(){
+        let post = {
+            animal: this.var1,
+            id_provincia: this.var2,
+            telefono: this.var3,
+            correo_electronico: this.var4,
+            precio: this.var5
+        };
+        axios.post('http://localhost:8080/kuidanimal/v1/anuncios', post)
+        .then((result) => {
+            console.log(result)
+        })
     }
   },
   created(){

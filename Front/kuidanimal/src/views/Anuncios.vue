@@ -41,9 +41,8 @@ img{
 
 .anuncios{
   width: 1600px; 
-  height: 700px;
+  height: auto;
   margin-top: 150px;
   border: 1px solid black;
-  overflow-y: scroll;
 }
 </style>

@@ -11,7 +11,7 @@
 
       <div class="anuncios">
         <h1>Aquí se modificarán los anuncios</h1>
-        <h4>Pincha en un id para seleccionar el anuncio para modificar</h4>
+        <h4>Selecciona un anuncio</h4>
         <br>
 
         <table class="table table-striped">
@@ -26,8 +26,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(anuncios) in anuncio" :key="anuncios">
-                    <td @click="obtenerCommercial(anuncios.id_anuncio)">{{anuncios.id_anuncio}}</td>
+                <tr v-for="(anuncios) in anuncio" :key="anuncios" @click="obtenerCommercial(anuncios.id_anuncio)">
+                    <td>{{anuncios.id_anuncio}}</td>
                     <td>{{anuncios.animal}}</td>
                     <td>
                         <span>
@@ -107,7 +107,7 @@ img{
 
 .anuncios{
   width: 1600px; 
-  height: 700px;
+  height: auto;
   margin-top: 150px;
   border: 1px solid black;
 }

@@ -19,10 +19,10 @@
 
             <span v-for="(anuncios) in anuncio" :key="anuncios">
 
-          
+                <div v-if="this.informacionCommercial == anuncios.id_anuncio">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Animal</span>
-                        <input type="text" class="form-control" placeholder="Animal" aria-label="Animal" aria-describedby="basic-addon1" v-model="var1">
+                        <input type="text" class="form-control" :placeholder="anuncios.animal" aria-label="Animal" aria-describedby="basic-addon1" v-model="var1">
                     </div>
 
                     <div class="input-group mb-3">
@@ -35,24 +35,24 @@
             
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon2">Teléfono de contacto</span>
-                        <input type="number" class="form-control" placeholder="Teléfono de contacto" aria-label="Teléfono de contacto" aria-describedby="basic-addon2" v-model="var3">
+                        <input type="number" class="form-control" :placeholder="anuncios.telefono" aria-label="Teléfono de contacto" aria-describedby="basic-addon2" v-model="var3">
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico" aria-describedby="basic-addon3" v-model="var4">
+                        <input type="text" class="form-control" :placeholder="anuncios.correo_electronico" aria-label="Correo electrónico" aria-describedby="basic-addon3" v-model="var4">
                         <span class="input-group-text" id="basic-addon3">@example.com/es</span>
                     </div>
 
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon2">Precio</span>
-                        <input type="number" class="form-control" placeholder="Precio" aria-label="Precio" aria-describedby="basic-addon2" v-model="var5">
+                        <input type="number" class="form-control" :placeholder="anuncios.precio" aria-label="Precio" aria-describedby="basic-addon2" v-model="var5">
                         <span class="input-group-text" id="basic-addon2">€</span>
                     </div>
                     
                     <div class="input-group mb-3">
-                        <button type="submit" class="btn btn-primary mb-3" @click="enviar" disabled>Crear</button>
+                        <button type="submit" class="btn btn-primary mb-3" @click="enviar">Modificar</button>
                     </div>
-                
+                </div>
             </span>
 
         </div>
@@ -71,6 +71,7 @@ export default{
    data(){
        return{
            anuncio: [],
+           provincias: [],
            ocultar: "",
            ubicacion: "",
            numero: "",
@@ -93,23 +94,33 @@ export default{
       })
    },
    methods: {
-        informacionAnuncios: function(animal, provincia, telefono, correo_electronico, precio){
+        informacionAnuncios: function(animal, provincia, telefono, correo_electronico, precio, id_anuncio){
             this.ocultar = animal;
             this.ubicacion = provincia;
             this.numero = telefono;
             this.equipo = correo_electronico;
             this.dinero = precio;
             this.id = id_anuncio;
+            
+            
+            // this.provincias.forEach(element => {
+            //     if (element.id_provincia === provincia) {
+            //         this.ubicacion = element.nombre;
+            //     }
+            // });
+            // console.log(this.ubicacion);
+
         },
         enviar(){
             let post = {
+                id_anuncio: this.id,
                 animal: this.var1,
                 id_provincia: this.var2,
                 telefono: this.var3,
                 correo_electronico: this.var4,
                 precio: this.var5
             };
-            axios.put('http://localhost:8080/kuidanimal/v1/anuncios'+ this.id, post)
+            axios.put('http://localhost:8080/kuidanimal/v1/anuncios/'+ this.id, post)
         }
    }
 }

@@ -7,12 +7,88 @@
       <div class="row">
         <img alt="Kuidanimal logo" src="../assets/Logo.jpg">
         <div class="anuncios">
-          <h1>Aquí se eliminarán los anuncios</h1>
+          <h1>Eliminar anuncios</h1>
+          <h4>Selecciona un anuncio</h4>
+
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id anuncio</th>
+                    <th scope="col">Animal</th>
+                    <th scope="col">Provincia</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Correo Electrónico</th>
+                    <th scope="col">Precio en €</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(anuncios) in anuncio" :key="anuncios" @click="obtenerDelete(anuncios.id_anuncio)">
+                    <td>{{anuncios.id_anuncio}}</td>
+                    <td>{{anuncios.animal}}</td>
+                    <td>
+                        <span>
+                            <ul v-for="(provincias) in provincias" :key="provincias">
+                                <li v-if="anuncios.id_provincia == provincias.id_provincia">{{provincias.nombre}}</li>
+                            </ul>
+                        </span>
+                    </td>
+                    <td>{{anuncios.telefono}}</td>
+                    <td>{{anuncios.correo_electronico}}</td>
+                    <td>{{anuncios.precio}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+        <div v-if="idInformacion != ''">
+            <Delete :informacionDelete="idInformacion" />
+        </div>
+
         </div>
       </div>
     </div>
   </body>
 </template>
+
+<script>
+
+import axios from 'axios';
+import Delete from '@/components/Delete.vue'
+
+export default {
+  
+  data(){
+      return{
+          anuncio: [],
+          provincias: [],
+          idInformacion: "",
+      }      
+  },
+   methods:{
+      obtenerProvincias(){
+       axios.get("http://localhost:8080/kuidanimal/v1/provincias").then((response) => {
+          this.provincias = response.data
+      })
+      },
+      obtenerAnuncios(){
+          axios.get("http://localhost:8080/kuidanimal/v1/anuncios").then((response) => {
+              this.anuncio = response.data
+          })
+      },
+       obtenerDelete: function(id){
+        this.idInformacion = id;
+
+      }
+  },
+  created(){
+      this.obtenerAnuncios();
+      this.obtenerProvincias();   
+  },
+   components: {
+    Delete
+  }
+}
+</script>
 
 <style scoped>
 img{
@@ -27,8 +103,12 @@ img{
 
 .anuncios{
   width: 1600px; 
-  height: 800px;
+  height: auto;
   margin-top: 150px;
   border: 1px solid black; 
+}
+
+li {
+    list-style: none;
 }
 </style>

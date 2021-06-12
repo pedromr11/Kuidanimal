@@ -10,7 +10,7 @@
       
 
       <div class="anuncios">
-        <h1>Aquí se modificarán los anuncios</h1>
+        <h1>Modificar anuncios</h1>
         <h4>Selecciona un anuncio</h4>
         <br>
 

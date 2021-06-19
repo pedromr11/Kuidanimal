@@ -1,0 +1,23 @@
+Antes de nada meterse en la carpeta en la que quieras hacer la imagen
+
+-Crear la imagen para la base de datos:
+docker build -t pedromr11/basedatos .
+
+-Crear la imagen para el front
+docker build -t pedromr11/front .
+
+-Crear la imagen para el back
+docker build -t pedromr11/back .
+
+Crear red de manera local para que se comuniquen los tres contenedores
+docker network create conexionkuidanimal
+docker network ls para ver que está
+
+Crear y arrancar contenedor de la base de datos
+docker run -d --network conexionkuidanimal --name mi_mysql -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=Kuidanimal -e MYSQL_PASSWORD=1234 -p 3307:3306 pedromr11/basedatos
+
+Crear y arrancar contenedor del back
+docker run -d --network conexionkuidanimal --name contenedorback -p 8086:8080 pedromr11/back
+
+Crear y arrancar el contenedor del front
+docker run –d –p 4200:80 --name contenedorfront pedromr11/front

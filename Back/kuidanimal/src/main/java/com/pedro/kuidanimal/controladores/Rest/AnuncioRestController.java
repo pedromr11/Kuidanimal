@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pedro.kuidanimal.dao.AnuncioDAO;
-import com.pedro.kuidanimal.dtos.AnuncioDTO;
+
 import com.pedro.kuidanimal.entities.AnuncioEntity;
 import com.pedro.kuidanimal.entities.ProvinciaEntity;
 import com.pedro.kuidanimal.repositorios.AnuncioRepository;
@@ -38,8 +36,7 @@ public class AnuncioRestController {
 	@Autowired
 	private ProvinciaRepository provinciaRepository;
 	
-	@Autowired
-	private AnuncioDAO anuncioDAO;
+
 	
 	//Insertar anuncios
 		
@@ -60,22 +57,6 @@ public class AnuncioRestController {
 		return anuncioRepository.findAll();
 	}
 	
-	//Obtener anuncios por id
-	
-	@GetMapping(value = "/anuncios/{id_anuncio}")
-	public Optional<AnuncioEntity> buscarAnuncioPorId(@PathVariable("id_anuncio") Integer id_anuncio) {
-		return anuncioRepository.findById(id_anuncio);
-	}
-	
-	
-	//Obtener anuncios por id y animal
-	
-	@GetMapping(value = "/anuncios", params = {"id_anuncio", "animal"})
-	public List<AnuncioDTO> listarAnuncioPorIdAnimal(@RequestParam("id_anuncio") Integer id_anuncio, @RequestParam("animal") String animal) {
-		
-		return anuncioDAO.obtenerAnuncioPorAnimalEId(id_anuncio, animal);
-	}
-	
 	
 	//Obtener todas las provincias
 	
@@ -87,7 +68,7 @@ public class AnuncioRestController {
 	
 	//Actualizar anuncio
 	
-	@PutMapping(value = "/anuncios")
+	@PutMapping(value = "/anuncios/{id_anuncio}")
 	public ResponseEntity<String> actulizarAnuncio(@RequestBody AnuncioEntity anuncio){
 		
 		anuncioRepository.save(anuncio);
@@ -96,7 +77,7 @@ public class AnuncioRestController {
 	
 	//Borrar anuncio
 	
-	@DeleteMapping(value = "anuncios/{id_anuncio}")
+	@DeleteMapping(value = "/anuncios/{id_anuncio}")
 	public ResponseEntity<String> MostrarFormularioBorrarAnuncios(@PathVariable("id_anuncio") Integer id_anuncio){
 		
 		anuncioRepository.deleteById(id_anuncio);

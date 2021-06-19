@@ -7,32 +7,37 @@
         <form>
           <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Animal</span>
-              <input type="text" class="form-control" placeholder="Animal" aria-label="Animal" aria-describedby="basic-addon1" v-model="var1">
+              <input type="text" class="form-control" placeholder="Animal" aria-label="Animal" aria-describedby="basic-addon1" v-model="var1">              
           </div>
+          <div class="error" v-if="var1.required">Es neceario completar el campo.</div>
 
           <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Provincia</span>
               <select class="form-select" aria-label="Default select example" v-model="var2">
                   <option v-for="(provincia, index) in provincias" :key="index" v-bind:value="provincia.id_provincia">{{provincia.nombre}}</option>
-              </select>
+              </select>              
           </div>
+          <div class="error" v-if="var2.required">Es neceario completar el campo.</div>
           <br>
           
           <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon2">Teléfono de contacto</span>
-              <input type="number" class="form-control" placeholder="Teléfono de contacto" aria-label="Teléfono de contacto" aria-describedby="basic-addon2" v-model="var3">
+              <input type="number" class="form-control" placeholder="Teléfono de contacto" aria-label="Teléfono de contacto" aria-describedby="basic-addon2" v-model="var3">              
           </div>
+          <div class="error" v-if="var3.required">Es neceario completar el campo.</div>
 
           <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico" aria-describedby="basic-addon3" v-model="var4">
-              <span class="input-group-text" id="basic-addon3">@example.com/es</span>
+              <span class="input-group-text" id="basic-addon3">@example.com/es</span>              
           </div>
+          <div class="error" v-if="var4.required">Es neceario completar el campo.</div>
 
           <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon2">Precio</span>
               <input type="number" class="form-control" placeholder="Precio" aria-label="Precio" aria-describedby="basic-addon2" v-model="var5">
               <span class="input-group-text" id="basic-addon2">€</span>
           </div>
+          <div class="error" v-if="var5.required">Es neceario completar el campo.</div>
 
           <div class="input-group mb-3">
               <button type="submit" class="btn btn-primary mb-3" @click="enviar">Crear</button>
@@ -45,6 +50,8 @@
 <script>
 
 import axios from 'axios';
+
+import {required} from 'vuelidate/lib/validators';
 
 export default {
   
@@ -77,6 +84,23 @@ export default {
             console.log(result)
         })
     }
+  },
+  validations: {
+      var1:{
+          required
+      },
+      var2:{
+          required
+      },
+      var3:{
+          required
+      },
+      var4:{
+          required
+      },
+      var5:{
+          required
+      }
   },
   created(){
       this.obtenerProvincias();   
